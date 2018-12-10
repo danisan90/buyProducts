@@ -1,0 +1,49 @@
+.main{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-product{
+    display: none;
+}
+.login{
+    display: flex;
+    justify-content: center;
+}
+.box{
+    width: 25%;
+}
+.input .is-success{
+
+    margin: 10%
+}
+#login{
+    margin: 10%;
+}
+.button .is-success{
+    margin: none;
+}
+.input.is-info, .textarea.is-info{
+    width: 25%;
+    margin: none;
+    
+}
+
+
+
+
+
+table, td, th {    
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 50%;
+ 
+}
+
+th, td {
+    padding: 15px;
+}

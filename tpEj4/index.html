@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <!-- logueo -->
+    <div class="login">
+    <div class="box">
+            <article class="media">
+              <div class="media-left">
+                    <div class="field">
+                        <div class="control ">
+                            <input class="input is-success" type="text" placeholder="Ingresar Nombre">
+                        </div>
+                    <a class="button is-success is-outlined" id="login" onclick="showOptions ()">Ingresar</a>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <div class="main">
+    <div class="form-product">
+            <div class="field" >
+                    <div class="control">
+                      <input class="input is-info" id = "nombreObjeto"type="text" name="nombre"  placeholder="Ingresar Producto">
+                    </div>
+                    <div class="control">
+                        <input class="input is-info" id = "valorPrecio" name="precio" placeholder="Precio">
+                    </div>
+        <!-- <input  id = "nombreObjeto" name="nombre" type="text" >
+        <input  id = "valorPrecio"  name="precio" type="number" placeholder="Precio"> -->
+        <a class="button is-success" id = "add" onclick="addItem ()" >
+                <span class="icon is-small">
+                  <i class="fas fa-check"></i>
+                </span>
+                <span>Add</span>
+              </a>
+        <!-- // voy a crear mi tabla de compras a realizar -->
+    
+        <p id="mensaje-error"></p>
+
+    </div>
+        
+    <div class="table-shopList">
+    </div>
+</div>
+<script src="ej4.js"></script> 
+    
+</body>
+</html>
