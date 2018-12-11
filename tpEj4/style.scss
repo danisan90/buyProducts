@@ -1,49 +1,84 @@
-.main{
+.main {
     display: flex;
     flex-direction: column;
-}
-
-.form-product{
+    margin: 5%;
+  }
+  
+  .form-product {
     display: none;
-}
-.login{
+    
+    align-items: center;
+  }
+  
+  .buttons-options{
+    display: none;
+  }
+  
+  .login {
     display: flex;
     justify-content: center;
-}
-.box{
+  }
+  
+  .box {
     width: 25%;
-}
-.input .is-success{
-
-    margin: 10%
-}
-#login{
+  }
+  
+  .input .is-success {
     margin: 10%;
-}
-.button .is-success{
+  }
+  
+  #login {
+    margin: 10%;
+  }
+  
+  .message-loanding{
+    display: none;
+  }
+  .loader {
+    display: none;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .button .is-success {
     margin: none;
-}
-.input.is-info, .textarea.is-info{
+  }
+  
+  .input.is-info, .textarea.is-info {
     width: 25%;
     margin: none;
-    
-}
-
-
-
-
-
-table, td, th {    
+  }
+  
+  table, td, th {
     border: 1px solid #ddd;
     text-align: center;
-}
-
-table {
+  }
+  
+  table {
     border-collapse: collapse;
     width: 50%;
- 
-}
-
-th, td {
+  }
+  
+  th, td {
     padding: 15px;
-}
+  }
+  .seleccionar-pago{
+    display: none;
+  }
+  /*# sourceMappingURL=style.css.map */

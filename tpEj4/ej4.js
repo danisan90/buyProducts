@@ -1,6 +1,9 @@
 /* a) En una tienda de ropa se cobra con varios medios de pago pero tienen diferencia de recargos, en efectivo se cobra 
 el precio normal, con debito un 5%, con credito un 10% y cheque un 20%
 
+/* a) En una tienda de ropa se cobra con varios medios de pago pero tienen diferencia de recargos, en efectivo se cobra 
+el precio normal, con debito un 5%, con credito un 10% y cheque un 20%
+
 b) Para una contestadora telefonica programar las siguientes opciones: 
 Mostrar en pantalla 5 botones que muestren en un console log lo siguiente segun la opcion seleccionada: 
 Opcion 1. conocer su deudad ->	Respuesta "su deuda es x " 
@@ -26,12 +29,9 @@ let products = [];
 
 var precios = products.precio;
 
-function showOptions() {
-  $("div.login").hide();
-  $("div.form-product").show();
 
-}
-
+/* creating tables
+ */
 function createTable () {
   var myTable = $('<table id="tableShopList"></table>');
   var header = "<th>Producto</th><th>Precio</th>";
@@ -45,8 +45,52 @@ function createTable () {
 function limpiarTabla() {
   $(".fila").remove();
 }
+function render (productsToShow) {
+  if(!productsToShow) {
+    productsToShow = products;
+  }
 
+  var table = $("#tableShopList");
+  for(let i = 0; i< products.length; i++){
+    var nombre = products[i].nombre;
+    var precio = products[i].precio;
 
+    var tdNombre = "<td>" + nombre + "</td>";
+    var tdPrecio = "<td>" + precio + "</td>";
+    
+    var fila = $('<tr class="fila"></tr>');
+
+    fila.append(tdNombre);
+    fila.append(tdPrecio);
+    
+
+    table.append(fila)
+  }
+  
+  var fila = $('<tr class="fila"></tr>');
+  var tdTotal = "<td>Subtotal</td><td id='subtotal'></td>";
+fila.append(tdTotal);
+table.append(fila);
+}
+
+/* buttons actions
+ */
+function showOptions() {
+  $("div.login").hide();
+  $("div.buttons-options").show();
+}
+function showBuyProcess () {
+  $("div.form-product").show();
+  $("div.loader").hide();
+}
+function loanding(){
+  $("div.loader").show();
+  setTimeout(function showBuyProcess () {
+    $("div.form-product").show();
+    $("div.loader").hide();
+  }, 2000)
+
+}
 function addItem () {
   $("div.table-shopList").show();
   
@@ -78,7 +122,8 @@ function addItem () {
   subtotal(precios);
  
 }
-
+/* calcular subtotal
+ */
 function subtotal(precios) {
   precios = products.precio;
   let precioTotal = 0
@@ -93,54 +138,37 @@ function subtotal(precios) {
   return precioTotal;
   
 }
-function render (productsToShow) {
-  if(!productsToShow) {
-    productsToShow = products;
-  }
+/* calcular precio final con medio de pago
+ */
+function formaDePago() {
+  $("div.seleccionar-pago").show();
 
-  var table = $("#tableShopList");
-  for(let i = 0; i< products.length; i++){
-    var nombre = products[i].nombre;
-    var precio = products[i].precio;
-
-    var tdNombre = "<td>" + nombre + "</td>";
-    var tdPrecio = "<td>" + precio + "</td>";
-    
-    var fila = $('<tr class="fila"></tr>');
-
-    fila.append(tdNombre);
-    fila.append(tdPrecio);
-    
-
-    table.append(fila)
-  }
-  
-  var fila = $('<tr class="fila"></tr>');
-  var tdTotal = "<td>Subtotal</td><td id='subtotal'></td>";
-fila.append(tdTotal);
-table.append(fila);
 }
 
-function precio (medioDePago, precioOriginal) {
+function precio (medioDePago) { 
+  let precioOriginal = subtotal();
+  
     if(medioDePago === 'efectivo'){
-        precio = precioOriginal;
-        return precio;
+        precioProducto = precioOriginal;
+        console.log(precioProducto)
+        return precioProducto;
     }
     else if (medioDePago === 'debito') {
-        precio = (5*precioOriginal)/100 + precioOriginal
-        return precio
+        precioProducto = (5*precioOriginal)/100 + precioOriginal
+        console.log(precioProducto)
+        return precioProducto
     }
     else if (medioDePago === 'credito'){
-        precio = (10*precioOriginal)/100 + precioOriginal;
-        return precio
+        precioProducto = (10*precioOriginal)/100 + precioOriginal;
+        console.log(precioProducto)
+        return precioProducto
     }
     else if (medioDePago === 'cheque'){
-        precio = (20*precioOriginal)/100 + precioOriginal;
-        return precio
+        precioProducto = (20*precioOriginal)/100 + precioOriginal;
+        console.log(precioProducto)
+        return precioProducto
     }
-
-
 }
-precio ("efectivo", 100)
+
 
 createTable();
