@@ -8,7 +8,9 @@
     display: none;
     
     align-items: center;
+   
   }
+  
   
   .buttons-options{
     display: none;
@@ -19,9 +21,7 @@
     justify-content: center;
   }
   
-  .box {
-    width: 25%;
-  }
+ 
   
   .input .is-success {
     margin: 10%;
@@ -81,4 +81,9 @@
   .seleccionar-pago{
     display: none;
   }
-  /*# sourceMappingURL=style.css.map */
+  .finalPrice {
+    
+    display: none;
+    width: 10%;
+    margin: 0.5%;
+  }

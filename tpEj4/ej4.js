@@ -87,6 +87,7 @@ function loanding(){
   $("div.loader").show();
   setTimeout(function showBuyProcess () {
     $("div.form-product").show();
+    $("div.box").hide();
     $("div.loader").hide();
   }, 2000)
 
@@ -142,10 +143,12 @@ function subtotal(precios) {
  */
 function formaDePago() {
   $("div.seleccionar-pago").show();
+  $("div.finalPrice").show();
 
 }
 
 function precio (medioDePago) { 
+  let theBox = $("div.finalPrice");
   let precioOriginal = subtotal();
   
     if(medioDePago === 'efectivo'){
@@ -168,6 +171,7 @@ function precio (medioDePago) {
         console.log(precioProducto)
         return precioProducto
     }
+    theBox.html(precioProducto);
 }
 
 
