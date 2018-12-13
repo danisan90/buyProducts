@@ -144,6 +144,9 @@ function subtotal(precios) {
 function formaDePago() {
   $("div.seleccionar-pago").show();
   $("div.finalPrice").show();
+    /*   mensaje de precio final */
+ 
+  
 
 }
 
@@ -171,7 +174,8 @@ function precio (medioDePago) {
         console.log(precioProducto)
         return precioProducto
     }
-    theBox.html(precioProducto);
+    let precioFinal = $('<article class="media"><div class="media-content><div class="content"><p><strong>"Precio Final"</strong></p></div></div></article>')  
+    $('.box').append(precioFinal);
 }
 
 
