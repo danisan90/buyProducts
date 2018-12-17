@@ -1,33 +1,13 @@
-/* a) En una tienda de ropa se cobra con varios medios de pago pero tienen diferencia de recargos, en efectivo se cobra 
-el precio normal, con debito un 5%, con credito un 10% y cheque un 20%
-
-/* a) En una tienda de ropa se cobra con varios medios de pago pero tienen diferencia de recargos, en efectivo se cobra 
-el precio normal, con debito un 5%, con credito un 10% y cheque un 20%
-
-b) Para una contestadora telefonica programar las siguientes opciones: 
-Mostrar en pantalla 5 botones que muestren en un console log lo siguiente segun la opcion seleccionada: 
-Opcion 1. conocer su deudad ->	Respuesta "su deuda es x " 
-Opcion 2. comprar nuevos productos ->	Respuesta "sera atendido en instantes" 
-Opcion 3. solicitar ayuda ->	Respuesta "todos los operadores se encuentran ocupados" 
-Opcion 4. dar la baja ->	Respuesta "opcion invalida, ya vendiste tu alma al diablo Muajajaja LTA" 
-Opcion 5. salir ->	Respuesta "gracias por usar nuestro servicio"
-
-c) Se pide que la persona ingrese el monto a financiar y la cantidad de cuotas segun nuestra tabla 
-1 cuota 0% 
-12 cuotas	20% 
-24 cuotas	45% 
-36 cuotas	70% 
-
-Como ejemplo si alguien ingresa como monto 1000 le queda a abonar en 
-1 cuota	1000 
-12 cuotas	100 
-24 cuotas	60,41 
-36 cuotas	47,22  */
-
+let userName = "";
 
 let products = [];
 
 var precios = products.precio;
+
+const RECARGO_1_CUOTA = 1;
+const RECARGO_12_CUOTA = 1.20;
+const RECARGO_24_CUOTA = 1.45;
+const RECARGO_36_CUOTA = 1.70;
 
 
 /* creating tables
@@ -75,25 +55,31 @@ table.append(fila);
 
 /* buttons actions
  */
-function showOptions() {
-  $("div.login").hide();
-  $("div.buttons-options").show();
-}
+
+  $(".field .button").click(function () {
+    $("div.login").hide();
+    $("div.buttons-options").show();
+
+    userName = $('.field input').val()
+  })
+ 
 function showBuyProcess () {
   $("div.form-product").show();
   $("div.loader").hide();
 }
 function loanding(){
   $("div.loader").show();
+  let messageLoading = (`<div class="message-loanding' id="load"><span id ="message-loa"> En instantes sera atendido</span></div>`)
+  $("div.loading").append(messageLoading)
+
   setTimeout(function showBuyProcess () {
     $("div.form-product").show();
     $("div.box").hide();
-    $("div.loader").hide();
+    $("div.loading").hide();
   }, 2000)
 
 }
 function addItem () {
-  $("div.table-shopList").show();
   
   // agregar mensaje de error
   let inputName = $('.form-product input[name="nombre"]');
@@ -109,19 +95,22 @@ function addItem () {
     nombre: nameProduct,
     precio: priceProduct,
   };
-
-  // pusheo el objeto al array vacio
-  products.push(newProduct);
-
-  //limpio los ipunt
-  inputName.val('');
-  inputPrice.val('');
-
-  //agregar validacio
-  limpiarTabla();
-  render();
-  subtotal(precios);
  
+  if (nameProduct && priceProduct) {
+    $("div.table-shopList").show();
+    $("a#button_debt").removeAttr("title").removeAttr("disabled")
+    // pusheo el objeto al array vacio
+    products.push(newProduct);
+
+    //limpio los ipunt
+    inputName.val('');
+    inputPrice.val('');
+
+    //agregar validacio
+    limpiarTabla();
+    render();
+    subtotal(precios);
+  }
 }
 /* calcular subtotal
  */
@@ -146,37 +135,65 @@ function formaDePago() {
   $("div.finalPrice").show();
     /*   mensaje de precio final */
  
-  
-
 }
 
 function precio (medioDePago) { 
-  let theBox = $("div.finalPrice");
+  /* let theBox = $("div.finalPrice"); */
   let precioOriginal = subtotal();
   
     if(medioDePago === 'efectivo'){
         precioProducto = precioOriginal;
         console.log(precioProducto)
-        return precioProducto;
+        let precioFinal = $(`<article class="media"><div class="media-content"><div class="content"><p>
+        <strong>Precio Final ${precioProducto}</strong></p></div></div></article>`); 
+        $('.box').html(precioFinal);
+        
     }
     else if (medioDePago === 'debito') {
         precioProducto = (5*precioOriginal)/100 + precioOriginal
         console.log(precioProducto)
-        return precioProducto
+        let precioFinal = $(`<article class="media"><div class="media-content"><div class="content"><p>
+        <strong>Precio Final ${precioProducto}</strong></p></div></div></article>`); 
+        $('.box').html(precioFinal);
     }
     else if (medioDePago === 'credito'){
         precioProducto = (10*precioOriginal)/100 + precioOriginal;
-        console.log(precioProducto)
-        return precioProducto
+        let recargoPayable = cuotas();
+        console.log(recargoPayable)
+        let finalPrice = precioProducto * recargoPayable
+        console.log(finalPrice,125)
+        /* $('.box').append(finalPrice); */
+        
     }
     else if (medioDePago === 'cheque'){
         precioProducto = (20*precioOriginal)/100 + precioOriginal;
         console.log(precioProducto)
-        return precioProducto
+        let precioFinal = $(`<article class="media"><div class="media-content"><div class="content"><p>
+        <strong>Precio Final ${precioProducto}</strong></p></div></div></article>`); 
+        $('.box').html(precioFinal);
     }
-    let precioFinal = $('<article class="media"><div class="media-content><div class="content"><p><strong>"Precio Final"</strong></p></div></div></article>')  
-    $('.box').append(precioFinal);
-}
+  }
+  
+  function cuotas () {
+      let cuotas = $(`<article class="media"><div class="media-content"><div class="content cuotas"><p>
+      <strong>Elegir cuotas <select name="cuotas" id="cuotas">
+      <option value="1">1</option>
+      <option value="12">12</option>
+      <option value="24">24</option>
+      <option value="36">36</option>
+      </select></strong></p></div></div></article>`); 
+      $('.box').html(cuotas);
+      let  payable = $("#cuotas").val()
+
+      if (payable === '1') recargoPayable = RECARGO_1_CUOTA;
+      if (payable === '12') recargoPayable = RECARGO_12_CUOTA;
+      if (payable === '24') recargoPayable = RECARGO_24_CUOTA;
+      if (payable === '36') recargoPayable = RECARGO_36_CUOTA;
+      console.log(`el recargo es ${recargoPayable}`)
+
+      return recargoPayable;
+    }
+
 
 
 createTable();
