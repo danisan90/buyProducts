@@ -7,7 +7,7 @@
 .main {
   display: flex;
   flex-direction: column;
-  margin: 5%;
+  /* margin: 5%; */
 }
 
 .form-product {
@@ -17,6 +17,11 @@
 
 .buttons-options {
   display: none;
+  margin: 2%;
+}
+
+.field {
+  margin: 2%;
 }
 
 .login {
@@ -34,8 +39,23 @@
 
 .message-loanding {
   display: none;
+}
+
+#message-loa {
   font-family: "Aleo", serif;
-  font-size: 12px;
+  font-size: 18px;
+  color: #ff9966;
+  margin-left: 45%;
+  padding: 3%;
+}
+
+.seleccionar-pago {
+  margin: 2%;
+}
+.seleccionar-pago .h3 {
+  font-family: "Aleo", serif;
+  font-size: 18px;
+  color: #ff9966;
 }
 
 .loader {
@@ -48,6 +68,7 @@
   -webkit-animation: spin 2s linear infinite;
   /* Safari */
   animation: spin 2s linear infinite;
+  margin-left: 50%;
 }
 
 /* Safari */
@@ -81,8 +102,12 @@
   margin: none;
 }
 
+.table-shopList {
+  margin: 2%;
+}
+
 table, td, th {
-  border: 1px solid #ddd;
+  border: 1px solid #00d1b2;
   text-align: center;
 }
 
@@ -107,6 +132,7 @@ th, td {
 
 .box {
   width: 250px;
+  margin: 2%;
 }
 
 /*# sourceMappingURL=style.css.map */

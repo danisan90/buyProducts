@@ -134,7 +134,6 @@ function formaDePago() {
   $("div.seleccionar-pago").show();
   $("div.finalPrice").show();
     /*   mensaje de precio final */
- 
 }
 
 function precio (medioDePago) { 
@@ -162,7 +161,9 @@ function precio (medioDePago) {
         console.log(recargoPayable)
         let finalPrice = precioProducto * recargoPayable
         console.log(finalPrice,125)
-        /* $('.box').append(finalPrice); */
+        let showTotal = $(`<button id="total">Mostrar total!</button>`);
+
+        $('.box').append(showTotal);
         
     }
     else if (medioDePago === 'cheque'){
@@ -176,11 +177,8 @@ function precio (medioDePago) {
   
   function cuotas () {
       let cuotas = $(`<article class="media"><div class="media-content"><div class="content cuotas"><p>
-      <strong>Elegir cuotas <select name="cuotas" id="cuotas">
-      <option value="1">1</option>
-      <option value="12">12</option>
-      <option value="24">24</option>
-      <option value="36">36</option>
+      <strong>Elegir cuotas <select name="cuotas" id="cuotas"><option value="1">1</option>
+      <option value="12">12</option><option value="24">24</option><option value="36">36</option>
       </select></strong></p></div></div></article>`); 
       $('.box').html(cuotas);
       let  payable = $("#cuotas").val()

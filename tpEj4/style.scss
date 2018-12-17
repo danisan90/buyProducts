@@ -8,7 +8,7 @@
 .main {
     display: flex;
     flex-direction: column;
-    margin: 5%;
+    /* margin: 5%; */
   }
   
   .form-product {
@@ -19,8 +19,13 @@
   
   .buttons-options{
     display: none;
+    margin: 2%;
+
   }
-  
+  .field{
+    margin: 2%;
+    
+  }
   .login {
     display: flex;
     justify-content: center;
@@ -36,9 +41,26 @@
   
   .message-loanding{
     display: none;
-  font-family: 'Aleo', serif;
-  font-size: 12px;
   }
+    #message-loa{
+      font-family: 'Aleo', serif;
+    font-size: 18px;
+    color: #ff9966;
+    margin-left: 45%;
+    padding: 3%;
+      
+    }
+    .seleccionar-pago{
+      margin:2%;
+    .h3{
+      font-family: 'Aleo', serif;
+      font-size: 18px;
+      color: #ff9966;
+      
+
+    }
+  }
+  
   .loader {
     display: none;
     border: 16px solid #f3f3f3;
@@ -48,6 +70,7 @@
     height: 120px;
     -webkit-animation: spin 2s linear infinite; /* Safari */
     animation: spin 2s linear infinite;
+    margin-left: 50%;
   }
   
   /* Safari */
@@ -73,9 +96,11 @@
     width: 25%;
     margin: none;
   }
-  
+  .table-shopList{
+    margin: 2%;
+  }
   table, td, th {
-    border: 1px solid #ddd;
+    border: 1px solid rgb(0,209,178);
     text-align: center;
   }
   
@@ -98,4 +123,5 @@
   }
   .box{
     width: 250px;
+    margin: 2%;
   }
